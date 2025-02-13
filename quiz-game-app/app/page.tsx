@@ -20,6 +20,10 @@ export default function Home() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-red-500">
       <h1 className="text-5xl font-bold text-white">Tailwind 적용 테스트</h1>
+
+			<button className="py-2 px-4 rounded-lg shadow-md text-white bg-blue-500">
+				Click me
+			</button>
     </main>
   );
 }

@@ -3,11 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"npm run build:css\" \"next dev\"",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "build:css": "tailwindcss -i ./app/globals.css -o ./public/tailwind.css --watch"
+    "lint": "next lint"
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.6",
