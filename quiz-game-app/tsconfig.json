@@ -1,27 +1,33 @@
 {
   "compilerOptions": {
     "target": "ES2017",
+
+		// 250213. Leo. TypeScript가 JSX를 인식하게하는 옵션인듯?
+		"jsx": "preserve",
     "lib": ["dom", "dom.iterable", "esnext"],
+		"strict": true,
+
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
+    
     "incremental": true,
     "plugins": [
       {
         "name": "next"
       }
     ],
+		// 250213. import 경로 쉽게 하기 위해 paths 설정
     "paths": {
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src", "app"],
   "exclude": ["node_modules"]
 }

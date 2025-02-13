@@ -1,0 +1,13 @@
+/* SCSS 변수 & 믹스인 불러오기 */
+@use "./variables" as *;
+@use "./mixins" as *;
+
+// 커스텀 스타일 정의
+.main-button {
+  @include button-style;
+  background-color: $button-color;
+  color: white;
+  &:hover {
+    background-color: $button-hover;
+  }
+}

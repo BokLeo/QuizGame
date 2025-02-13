@@ -1,17 +1,24 @@
-// app/layout.tsx
-import './globals.css'; // 글로벌 스타일 파일이 app 폴더 내에 있다고 가정합니다.
+"use client";
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+// globals.css import
+// import "./styles/globals.scss"
+// import "./styles/custom.scss"
+import "@/styles/globals.scss";
+import "@/styles/custom.scss";
+
+import { usePathname } from "next/navigation";
+import Navigation from "@/shared/ui/Navigation";
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const pathname = usePathname();
+  const showNavigation = pathname !== "/"; // 첫 페이지('/')에서는 네비게이션 숨김
+
   return (
     <html lang="en">
-      <head>
-        <title>Quiz & Game Project</title>
-      </head>
-      <body>{children}</body>
+      <body className="flex">
+        {showNavigation && <Navigation />}
+        <main className="flex-1">{children}</main>
+      </body>
     </html>
   );
 }
