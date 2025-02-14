@@ -12,7 +12,9 @@ function NavigationContent() {
       <Link href="/" className="mb-4 block text-center w-full p-2">
         홈
       </Link>
-      <Link href="/quiz/proverb" className={`${selectedMenu === "proverb" ? "bg-gray-700" : ""}`}>속담 맞추기</Link>
+      <Link href="/quiz/Proverb" className={`${selectedMenu === "Proverb" ? "bg-gray-700" : ""}`}>속담 맞추기</Link>
+      <Link href="/quiz/Fourword" className={`${selectedMenu === "Fourword" ? "bg-gray-700" : ""}`}>사자성어 맞추기</Link>
+      <Link href="/quiz/Character" className={`${selectedMenu === "Character" ? "bg-gray-700" : ""}`}>캐릭터 맞추기</Link>
       <Link href="/settings">설정</Link>
     </aside>
   );
