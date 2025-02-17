@@ -29,7 +29,7 @@ export default function QuizLayout({ title, children, answerLength }: QuizLayout
 
       {/* 하단 - 정답 입력 */}
       <div className="mt-8 w-full max-w-xl mx-auto">
-        <QuizInput length={answerLength} onSubmit={handleAnswerSubmit} />
+        <QuizInput answerLength={answerLength} onSubmit={handleAnswerSubmit} />
       </div>
     </div>
   );
