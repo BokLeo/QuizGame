@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@tailwindcss/cli": "^4.0.6",
+    "hangul-js": "^0.2.6",
     "next": "15.1.6",
     "quiz-game-app": "file:",
     "react": "^19.0.0",
