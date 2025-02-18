@@ -32,9 +32,11 @@ const SingleInputQuiz: React.FC<SingleInputQuizProps> = ({ answerLength }) => {
     const disassembled = Hangul.disassemble(text, true);
     if (disassembled.length === 2) return false;
     if (disassembled.length === 3) {
-      const finalConsonant = disassembled[2];
-      const combinable = new Set(["ㄱ", "ㄴ", "ㄹ", "ㅂ"]);
-      return !combinable.has(finalConsonant);
+			// 추가 자음 결합이 가능한 경우: ㄱ, ㄴ, ㄹ, ㅂ는 추가 자음(예: ㅅ)과 결합할 수 있음
+      const finalConsonantArray = disassembled[2];
+			const finalConsonant = finalConsonantArray[0]; // 배열의 첫 번째 요소 사용
+			const combinable = new Set(["ㄱ", "ㄴ", "ㄹ", "ㅂ"]);
+			return !combinable.has(finalConsonant);
     }
     return false;
   };
