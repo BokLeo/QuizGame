@@ -1,0 +1,36 @@
+// SingleInputQuiz.module.scss
+.quizInputContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.hiddenInput {
+  position: absolute;
+  left: -1000px;
+  opacity: 0;
+  caret-color: black;
+}
+
+.boxContainer {
+  display: flex;
+}
+
+.inputBox {
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 5px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.activeBox {
+  background-color: skyblue;
+}
+
+.inactiveBox {
+  background-color: white;
+}
