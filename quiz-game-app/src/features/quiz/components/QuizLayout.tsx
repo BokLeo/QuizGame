@@ -17,7 +17,7 @@ export default function QuizLayout({ title, children, answerLength }: QuizLayout
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen w-screen p-4">
+    <div className="flex flex-col items-center justify-center h-screen p-4">
       {/* 상단 - 제목 */}
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
 

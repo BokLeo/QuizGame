@@ -3,12 +3,14 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 
+import style from "./Navigation.module.scss";
+
 function NavigationContent() {
   const searchParams = useSearchParams();
   const selectedMenu = searchParams.get("menu") || "/";
 
   return (
-    <aside className="w-52 bg-gray-800 text-white flex flex-col items-center p-2">
+    <aside id={style.navigation} className="bg-gray-800 text-white flex flex-col items-center p-2">
       <Link href="/" className="mb-4 block text-center w-full p-2">
         홈
       </Link>

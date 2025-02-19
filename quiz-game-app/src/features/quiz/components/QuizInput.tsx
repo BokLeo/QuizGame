@@ -9,7 +9,7 @@ interface QuizInputProps {
 
 const QuizInput: React.FC<QuizInputProps> = ({ answerLength }) => {
   return (
-    <div>
+    <div className="text-center">
       {/* SingleInput 컴포넌트를 호출하여 answerLength를 전달 */}
       <SingleInput answerLength={answerLength} />
     </div>

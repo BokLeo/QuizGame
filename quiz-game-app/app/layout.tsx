@@ -7,7 +7,7 @@ import "@/styles/globals.scss";
 import "@/styles/custom.scss";
 
 import { usePathname } from "next/navigation";
-import Navigation from "@/shared/ui/Navigation";
+import Navigation from "@/shared/ui/navigation/Navigation";
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

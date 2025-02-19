@@ -1,6 +1,6 @@
 // SingleInput.tsx
 import React from "react";
-import { useQuizInputLogic } from "./SingleInputHook";
+import { SingleInputHook } from "./SingleInputHook";
 import styles from "./SingleInput.module.scss";
 
 interface SingleInputProps {
@@ -18,7 +18,7 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength }) => {
     handleCompositionEnd,
     handleBlur,
     handleBoxClick,
-  } = useQuizInputLogic(answerLength);
+  } = SingleInputHook(answerLength);
 
   return (
     <div className={styles.quizInputContainer}>

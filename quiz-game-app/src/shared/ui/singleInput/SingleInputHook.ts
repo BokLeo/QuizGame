@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import Hangul from "hangul-js";
 
-export const useQuizInputLogic = (answerLength: number) => {
+export const SingleInputHook = (answerLength: number) => {
   const [letters, setLetters] = useState<string[]>(Array(answerLength).fill(""));
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [currentInput, setCurrentInput] = useState<string>("");
