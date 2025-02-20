@@ -13,6 +13,7 @@ export function SingleInputHook(answerLength: number) {
     setLetters(Array(answerLength).fill(""));
     setActiveIndex(0);
     setCurrentInput("");
+		inputRef.current?.focus();
   }, [answerLength]);
 
   // 나머지 handleChange, handleKeyDown, handleCompositionEnd, handleBlur, handleBoxClick 구현...
@@ -21,19 +22,27 @@ export function SingleInputHook(answerLength: number) {
     setCurrentInput(e.target.value);
   };
 
-  const isMaxComposition = (text: string): boolean => {
-    if (!text) return false;
-    const disassembled = Hangul.disassemble(text, true);
-    if (disassembled.length === 2) return false;
-    if (disassembled.length === 3) {
-      const finalConsonantArray = disassembled[2];
-      const finalConsonant = finalConsonantArray[0];
-      const combinable = new Set(["ㄱ", "ㄴ", "ㄹ", "ㅂ"]);
-      return !combinable.has(finalConsonant);
-    }
-    return false;
-  };
+	// 현재 입력값이 최대 조합 상태이면 자동 commit
+	// 📌 없어도 되는 것 같음
+  // const isMaxComposition = (text: string): boolean => {
+  //   if (!text) return false;
+  //   const disassembled = Hangul.disassemble(text, true);
+  //   if (disassembled.length === 2) return false;
+  //   if (disassembled.length === 3) {
+  //     const finalConsonantArray = disassembled[2];
+  //     const finalConsonant = finalConsonantArray[0];
+  //     const combinable = new Set(["ㄱ", "ㄴ", "ㄹ", "ㅂ"]);
+  //     return !combinable.has(finalConsonant);
+  //   }
+  //   return false;
+  // };
 
+  // useEffect(() => {
+  //   if (currentInput && isMaxComposition(currentInput)) {
+  //     commitLetter();
+  //   }
+  // }, [currentInput]);
+	
   const commitLetter = () => {
     const finalValue = currentInput;
     if (finalValue) {
@@ -56,38 +65,39 @@ export function SingleInputHook(answerLength: number) {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Backspace") {
-      e.preventDefault();
-      if (currentInput.length > 0) {
-        setCurrentInput("");
-        setLetters((prev) => {
-          const newArr = [...prev];
-          newArr[activeIndex] = "";
-          return newArr;
-        });
-      } else if (activeIndex > 0) {
-        setActiveIndex((prevIndex) => {
-          const newIndex = prevIndex - 1;
-          setLetters((prevLetters) => {
-            const newArr = [...prevLetters];
-            newArr[newIndex] = "";
-            return newArr;
-          });
-          setCurrentInput("");
-          return newIndex;
-        });
-      }
-    } else if (e.key === "Tab") {
-      e.preventDefault();
-      if (currentInput) {
-        commitLetter();
-      } else if (activeIndex < answerLength - 1) {
-        setActiveIndex(activeIndex + 1);
-      }
-    } else {
-      setLastKey(e.key);
-    }
-  };
+		if (e.key === "Backspace") {
+			e.preventDefault();
+			// currentInput이 있거나, currentInput은 비어있지만 해당 박스(letter)가 비어있지 않으면 지움
+			if (currentInput.length > 0 || letters[activeIndex] !== "") {
+				setCurrentInput("");
+				setLetters((prev) => {
+					const newArr = [...prev];
+					newArr[activeIndex] = "";
+					return newArr;
+				});
+			} else if (activeIndex > 0) {
+				setActiveIndex((prevIndex) => {
+					const newIndex = prevIndex - 1;
+					setLetters((prevLetters) => {
+						const newArr = [...prevLetters];
+						newArr[newIndex] = "";
+						return newArr;
+					});
+					setCurrentInput("");
+					return newIndex;
+				});
+			}
+		} else if (e.key === "Tab") {
+			e.preventDefault();
+			if (currentInput) {
+				commitLetter();
+			} else if (activeIndex < answerLength - 1) {
+				setActiveIndex(activeIndex + 1);
+			}
+		} else {
+			setLastKey(e.key);
+		}
+	};
 
   const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement>) => {
     commitLetter();

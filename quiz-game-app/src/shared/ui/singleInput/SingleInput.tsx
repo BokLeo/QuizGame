@@ -25,6 +25,23 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength, onSubmit }) => 
     index === activeIndex ? (currentInput || letter) : letter
   ).join("");
 
+	// onKeyDown 이벤트를 감싸서, 마지막 박스에서 Enter 키가 눌리면 onSubmit을 호출하도록 함
+  const handleKeyDownWrapper = (e: React.KeyboardEvent<HTMLInputElement>) => {
+		// 마지막 박스에서 Enter 키가 눌렸고, 최종 정답 문자열의 길이가 answerLength와 동일한 경우에만 제출 처리
+		if (
+			e.key === "Enter" &&
+			activeIndex === answerLength - 1 &&
+			finalAnswer.length === answerLength
+		) {
+			e.preventDefault();
+			if (onSubmit) {
+				onSubmit(finalAnswer);
+			}
+			return;
+		}
+		handleKeyDown(e);
+	};
+
   return (
     <div className={styles.quizInputContainer}>
       <input
@@ -32,7 +49,7 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength, onSubmit }) => 
         type="text"
         value={currentInput}
         onChange={handleChange}
-        onKeyDown={handleKeyDown}
+        onKeyDown={handleKeyDownWrapper}
         onCompositionEnd={handleCompositionEnd}
         onBlur={handleBlur}
         className={styles.hiddenInput}
