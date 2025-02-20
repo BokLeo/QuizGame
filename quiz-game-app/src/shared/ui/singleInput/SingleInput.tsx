@@ -1,13 +1,13 @@
-// SingleInput.tsx
 import React from "react";
 import { SingleInputHook } from "./SingleInputHook";
 import styles from "./SingleInput.module.scss";
 
 interface SingleInputProps {
   answerLength: number;
+  onSubmit?: (answer: string) => void;
 }
 
-const SingleInput: React.FC<SingleInputProps> = ({ answerLength }) => {
+const SingleInput: React.FC<SingleInputProps> = ({ answerLength, onSubmit }) => {
   const {
     letters,
     activeIndex,
@@ -19,6 +19,11 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength }) => {
     handleBlur,
     handleBoxClick,
   } = SingleInputHook(answerLength);
+
+  // 현재 상태(커서 위치에 따라 미완료된 글자 포함)에서 최종 정답 문자열을 생성
+  const finalAnswer = letters.map((letter, index) =>
+    index === activeIndex ? (currentInput || letter) : letter
+  ).join("");
 
   return (
     <div className={styles.quizInputContainer}>
@@ -51,6 +56,15 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength }) => {
           );
         })}
       </div>
+      {/* onSubmit prop이 존재하면 제출 버튼 렌더링 */}
+      {onSubmit && (
+        <button
+          onClick={() => onSubmit(finalAnswer)}
+          className={styles.submitButton}
+        >
+          제출
+        </button>
+      )}
     </div>
   );
 };

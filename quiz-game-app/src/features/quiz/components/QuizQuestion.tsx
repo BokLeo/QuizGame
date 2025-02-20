@@ -1,6 +1,7 @@
 interface QuizQuestionProps {
   question: string;
   image?: string;
+	onAnswerSubmit?: (userAnswer: string) => void
 }
 
 export default function QuizQuestion({ question, image }: QuizQuestionProps) {

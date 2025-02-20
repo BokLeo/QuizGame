@@ -1,15 +1,26 @@
-// useQuizInputLogic.ts
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Hangul from "hangul-js";
 
-export const SingleInputHook = (answerLength: number) => {
+export function SingleInputHook(answerLength: number) {
   const [letters, setLetters] = useState<string[]>(Array(answerLength).fill(""));
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [currentInput, setCurrentInput] = useState<string>("");
   const [lastKey, setLastKey] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  // 한글 조합 최대치 판단 함수
+  // answerLength prop이 변경될 때마다 상태를 재설정합니다.
+  useEffect(() => {
+    setLetters(Array(answerLength).fill(""));
+    setActiveIndex(0);
+    setCurrentInput("");
+  }, [answerLength]);
+
+  // 나머지 handleChange, handleKeyDown, handleCompositionEnd, handleBlur, handleBoxClick 구현...
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentInput(e.target.value);
+  };
+
   const isMaxComposition = (text: string): boolean => {
     if (!text) return false;
     const disassembled = Hangul.disassemble(text, true);
@@ -23,7 +34,6 @@ export const SingleInputHook = (answerLength: number) => {
     return false;
   };
 
-  // 입력값을 커밋하는 함수
   const commitLetter = () => {
     const finalValue = currentInput;
     if (finalValue) {
@@ -43,24 +53,6 @@ export const SingleInputHook = (answerLength: number) => {
       }
       setCurrentInput("");
     }
-  };
-
-  // 상태 및 포커스 관리
-  useEffect(() => {
-    setCurrentInput(letters[activeIndex] || "");
-    inputRef.current?.focus();
-  }, [activeIndex, letters]);
-
-  // 현재 입력값이 최대 조합 상태이면 자동 commit
-  useEffect(() => {
-    if (currentInput && isMaxComposition(currentInput)) {
-      commitLetter();
-    }
-  }, [currentInput]);
-
-  // 이벤트 핸들러들
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCurrentInput(e.target.value);
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -129,4 +121,4 @@ export const SingleInputHook = (answerLength: number) => {
     handleBlur,
     handleBoxClick,
   };
-};
+}

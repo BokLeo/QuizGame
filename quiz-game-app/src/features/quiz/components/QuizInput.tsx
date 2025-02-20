@@ -1,17 +1,15 @@
-// QuizInput.tsx
 import React from "react";
 import SingleInput from "@/shared/ui/singleInput/SingleInput";
 
 interface QuizInputProps {
   answerLength: number;
-  // 추가적인 필요한 props들이 있다면 여기에 정의
+  onSubmit: (answer: string) => void;
 }
 
-const QuizInput: React.FC<QuizInputProps> = ({ answerLength }) => {
+const QuizInput: React.FC<QuizInputProps> = ({ answerLength, onSubmit }) => {
   return (
     <div className="text-center">
-      {/* SingleInput 컴포넌트를 호출하여 answerLength를 전달 */}
-      <SingleInput answerLength={answerLength} />
+      <SingleInput answerLength={answerLength} onSubmit={onSubmit} />
     </div>
   );
 };
