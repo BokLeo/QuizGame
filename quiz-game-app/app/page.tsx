@@ -7,7 +7,7 @@ export default function Home() {
       <p className="mt-4 text-lg">환영합니다! 다음 페이지로 이동해보세요.</p>
       
       {/* Next.js의 Link 컴포넌트를 사용하여 페이지 이동 */}
-      <Link href="/quiz/proverb">
+      <Link href="/quiz/Proverb" className={`bg-gray-700`}>
         <button className="main-button">Get Started</button>
       </Link>
 

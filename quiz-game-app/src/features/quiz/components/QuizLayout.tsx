@@ -12,7 +12,7 @@ interface QuizLayoutProps {
 
 export default function QuizLayout({ title, children, answerLength, onSubmit }: QuizLayoutProps) {
   return (
-    <div className="flex flex-col items-center justify-center h-screen p-4">
+    <div className="flex flex-col items-center justify-center h-screen p-4 w-full">
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
       <div className="border rounded-md p-4 shadow-md bg-white relative w-full max-w-xl mx-auto min-h-[400px] flex flex-col justify-center">
         {children}
