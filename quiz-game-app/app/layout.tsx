@@ -15,9 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body className="flex">
+      <body className="flex h-screen">
         {showNavigation && <Navigation />}
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 flex flex-col items-center justify-center h-screen p-4">{children}</main>
       </body>
     </html>
   );
