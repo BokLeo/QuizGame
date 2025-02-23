@@ -30,18 +30,18 @@ export default function ProverbQuiz() {
       .catch((error) => console.error("퀴즈 데이터를 가져오는데 실패:", error));
   };
 
-  // 설정 화면 (QuizLayout 없이)
-  if (!isQuizStarted) {
-    return <QuizSettings onStart={handleStartQuiz} />;
-  }
+  // // 설정 화면 (QuizLayout 없이)
+  // if (!isQuizStarted) {
+  //   return <QuizSettings onStart={handleStartQuiz} />;
+  // }
 
-  // 로딩 상태
-  if (quizzes.length === 0) {
-    return <div>Loading...</div>;
-  }
+  // // 로딩 상태
+  // if (quizzes.length === 0) {
+  //   return <div>Loading...</div>;
+  // }
 
   // 모든 문제를 다 풀었으면 완료 메시지 출력
-  if (currentIndex >= quizzes.length) {
+  if (isQuizStarted && currentIndex >= quizzes.length) {
     return (
       <QuizLayout title="속담 맞추기" answerLength={0} onSubmit={() => {}}>
         <div>퀴즈 완료!</div>
@@ -70,14 +70,24 @@ export default function ProverbQuiz() {
   return (
     <QuizLayout
       title="속담 맞추기"
-      answerLength={currentQuiz.정답.length}
+      answerLength={currentQuiz?.정답?.length || 0}
       onSubmit={handleAnswerSubmit}
+      showQuizControls={isQuizStarted} // 퀴즈가 시작된 경우에만 하단 컨트롤 표시
     >
-      <QuizQuestion question={currentQuiz.문제} />
-      {isCorrect && <div style={{ fontSize: "2rem", color: "green" }}>O</div>}
-      {feedback && !isCorrect && (
-        <div style={{ marginTop: "1rem", color: "red" }}>{feedback}</div>
+      {!isQuizStarted ? (
+        <QuizSettings onStart={handleStartQuiz} />
+      ) : (
+        <>
+          <QuizQuestion question={currentQuiz.문제} />
+          {isCorrect && (
+            <div style={{ fontSize: "2rem", color: "green" }}>O</div>
+          )}
+          {feedback && !isCorrect && (
+            <div style={{ marginTop: "1rem", color: "red" }}>{feedback}</div>
+          )}
+        </>
       )}
     </QuizLayout>
   );
+	
 }
