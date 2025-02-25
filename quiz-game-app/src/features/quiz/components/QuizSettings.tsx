@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 
 interface QuizSettingsProps {
-  onStart: (questionCount: number) => void; // 시작 버튼 클릭 시 콜백
-  defaultCount?: number; // 기본 문항 수 (선택)
+  onStart: (questionCount: number) => void;
+  defaultCount?: number;
 }
 
-const QuizSettings: React.FC<QuizSettingsProps> = ({ onStart, defaultCount = 5 }) => {
+const QuizSettings: React.FC<QuizSettingsProps> = ({
+  onStart,
+  defaultCount = 5,
+}) => {
   const [questionCount, setQuestionCount] = useState<number>(defaultCount);
 
   return (

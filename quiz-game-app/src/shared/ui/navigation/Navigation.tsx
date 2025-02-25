@@ -7,7 +7,7 @@ import style from "./Navigation.module.scss";
 
 function NavigationContent() {
   const searchParams = useSearchParams();
-  const selectedMenu = searchParams.get("menu") || "/";
+  const selectedMenu = searchParams?.get("menu") || "/";
 
   return (
     <aside id={style.navigation} className="bg-gray-800 text-white flex flex-col items-center p-2">

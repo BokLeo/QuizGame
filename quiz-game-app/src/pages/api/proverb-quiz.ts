@@ -1,9 +1,9 @@
 // pages/api/proverb-quiz.ts
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { proverbQuizzes } from '@/entities/quiz/proverbQuizData';
+import { proverbQuizzes, Quiz } from '@/entities/quiz/proverbQuizData';
 
 // Fisher-Yates 알고리즘으로 배열 섞기
-const shuffleArray = (array: any[]) => {
+const shuffleArray = (array: Quiz[]) => {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));

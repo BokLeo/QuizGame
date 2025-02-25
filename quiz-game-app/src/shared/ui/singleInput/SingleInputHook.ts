@@ -99,7 +99,7 @@ export function SingleInputHook(answerLength: number) {
 		}
 	};
 
-  const handleCompositionEnd = (e: React.CompositionEvent<HTMLInputElement>) => {
+  const handleCompositionEnd = () => {
     commitLetter();
   };
 
