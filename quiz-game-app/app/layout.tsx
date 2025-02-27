@@ -1,10 +1,9 @@
 "use client";
 
-// globals.css import
-// import "./styles/globals.scss"
-// import "./styles/custom.scss"
 import "@/styles/globals.scss";
 import "@/styles/custom.scss";
+import "@fortawesome/fontawesome-free/css/all.css";
+
 
 import { usePathname } from "next/navigation";
 import Navigation from "@/shared/ui/navigation/Navigation";

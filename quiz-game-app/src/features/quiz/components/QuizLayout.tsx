@@ -5,15 +5,17 @@ import QuizSettings from "./QuizSettings";
 import QuizComplete from "./QuizComplete";  // QuizComplete 임포트
 
 interface QuizLayoutProps {
-  title: string;
-  answerLength: number;
-  onSubmit: (answer: string) => void;
-  currentQuiz: { 문제: string } | null;
-  feedback: string;
-  handleStartQuiz: (questionCount: number) => void;
-  isQuizCompleted: boolean;  // 퀴즈 완료 여부를 받는 prop
-	isQuizStarted: boolean;
-	isCorrect: boolean;
+  title: string;            // 제목을 받는 문자열 타입
+  answerLength: number;     // 정답 길이를 받는 숫자 타입
+  onSubmit: (answer: string) => void;  // 정답 제출 함수, answer는 문자열 타입
+  currentQuiz: { 문제: string, 정답: string, 설명: string }; // 현재 퀴즈에 대한 정보
+  feedback: string;         // 피드백을 받는 문자열 타입
+  handleStartQuiz: (questionCount: number) => void;  // 퀴즈 시작 함수, questionCount는 숫자 타입
+  isQuizCompleted: boolean; // 퀴즈 완료 여부를 받는 불리언 타입
+  isQuizStarted: boolean;   // 퀴즈 시작 여부를 받는 불리언 타입
+  isCorrect: boolean[];       // 각 문제 정답 여부를 받는 불리언 타입 배열
+	currentIndex: number;
+	onRetry: () => void;			// 다시 하기 함수
 }
 
 export default function QuizLayout({
@@ -24,6 +26,10 @@ export default function QuizLayout({
   feedback,
   handleStartQuiz,
   isQuizCompleted,  // 퀴즈 완료 여부 받기
+	isQuizStarted,
+	isCorrect,
+	currentIndex,
+	onRetry,
 }: QuizLayoutProps) {
   return (
     <div className="flex flex-col items-center justify-center h-screen p-4 w-full">
@@ -31,21 +37,21 @@ export default function QuizLayout({
 
 			{!isQuizCompleted ? (
 				// 퀴즈 진행 중일 때
-				currentQuiz ? (
+				isQuizStarted ? (
 					<>
 						<div className="border rounded-md p-4 shadow-md bg-white relative w-full max-w-xl mx-auto min-h-[400px] flex flex-col justify-center">
-							<QuizQuestion question={currentQuiz.문제} feedback={feedback} isCorrect={feedback === "정답입니다!"} />
+							<QuizQuestion currentQuiz={currentQuiz} feedback={feedback} isCorrect={isCorrect[currentIndex]} />
 						</div>
 
 						<div className="mt-8 w-full max-w-xl mx-auto">
-							<QuizInput answerLength={answerLength} onSubmit={onSubmit} />
+							<QuizInput questionNumber={currentIndex + 1} answerLength={answerLength} onSubmit={onSubmit} />
 						</div>
 					</>
 				) : (
 					<QuizSettings onStart={handleStartQuiz} />
 				)
 			) : (
-				<QuizComplete title="속담 맞추기" />
+				<QuizComplete onRetry={onRetry} isCorrect={isCorrect} />
 			)}
 
     </div>

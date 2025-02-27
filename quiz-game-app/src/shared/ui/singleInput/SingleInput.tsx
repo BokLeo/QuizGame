@@ -3,11 +3,12 @@ import { SingleInputHook } from "./SingleInputHook";
 import styles from "./SingleInput.module.scss";
 
 interface SingleInputProps {
+	questionNumber: number;
   answerLength: number;
   onSubmit?: (answer: string) => void;
 }
 
-const SingleInput: React.FC<SingleInputProps> = ({ answerLength, onSubmit }) => {
+const SingleInput: React.FC<SingleInputProps> = ({ questionNumber, answerLength, onSubmit }) => {
   const {
     letters,
     activeIndex,
@@ -18,7 +19,7 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength, onSubmit }) => 
     handleCompositionEnd,
     handleBlur,
     handleBoxClick,
-  } = SingleInputHook(answerLength);
+  } = SingleInputHook(questionNumber, answerLength);
 
   // 현재 상태(커서 위치에 따라 미완료된 글자 포함)에서 최종 정답 문자열을 생성
   const finalAnswer = letters.map((letter, index) =>
@@ -75,12 +76,14 @@ const SingleInput: React.FC<SingleInputProps> = ({ answerLength, onSubmit }) => 
       </div>
       {/* onSubmit prop이 존재하면 제출 버튼 렌더링 */}
       {onSubmit && (
-        <button
-          onClick={() => onSubmit(finalAnswer)}
-          className={styles.submitButton}
-        >
-          제출
-        </button>
+        // Submit 버튼을 스타일링하기 위한 예시 코드
+				<button
+					onClick={() => onSubmit(finalAnswer)}
+					className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 active:bg-blue-700 focus:outline-none transition-all duration-300"
+				>
+					ENTER
+				</button>
+
       )}
     </div>
   );

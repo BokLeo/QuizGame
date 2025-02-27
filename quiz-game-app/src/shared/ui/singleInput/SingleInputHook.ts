@@ -1,12 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import Hangul from "hangul-js";
 
-export function SingleInputHook(answerLength: number) {
+export function SingleInputHook(questionNumber: number, answerLength: number) {
   const [letters, setLetters] = useState<string[]>(Array(answerLength).fill(""));
   const [activeIndex, setActiveIndex] = useState<number>(0);
   const [currentInput, setCurrentInput] = useState<string>("");
   const [lastKey, setLastKey] = useState<string | null>(null);
   const inputRef = useRef<HTMLInputElement>(null);
+
 
   // answerLength prop이 변경될 때마다 상태를 재설정합니다.
   useEffect(() => {
@@ -14,7 +15,7 @@ export function SingleInputHook(answerLength: number) {
     setActiveIndex(0);
     setCurrentInput("");
 		inputRef.current?.focus();
-  }, [answerLength]);
+  }, [questionNumber, answerLength]);
 
   // 나머지 handleChange, handleKeyDown, handleCompositionEnd, handleBlur, handleBoxClick 구현...
 
@@ -22,27 +23,6 @@ export function SingleInputHook(answerLength: number) {
     setCurrentInput(e.target.value);
   };
 
-	// 현재 입력값이 최대 조합 상태이면 자동 commit
-	// 📌 없어도 되는 것 같음
-  // const isMaxComposition = (text: string): boolean => {
-  //   if (!text) return false;
-  //   const disassembled = Hangul.disassemble(text, true);
-  //   if (disassembled.length === 2) return false;
-  //   if (disassembled.length === 3) {
-  //     const finalConsonantArray = disassembled[2];
-  //     const finalConsonant = finalConsonantArray[0];
-  //     const combinable = new Set(["ㄱ", "ㄴ", "ㄹ", "ㅂ"]);
-  //     return !combinable.has(finalConsonant);
-  //   }
-  //   return false;
-  // };
-
-  // useEffect(() => {
-  //   if (currentInput && isMaxComposition(currentInput)) {
-  //     commitLetter();
-  //   }
-  // }, [currentInput]);
-	
   const commitLetter = () => {
     const finalValue = currentInput;
     if (finalValue) {

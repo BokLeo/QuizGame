@@ -12,7 +12,6 @@ export default function QuizPage({
   params: Promise<{ type: string }>;
 }) {
   const { type } = use(params); // Promise 해제
-	console.log(type);
   switch (type) {
     case "Proverb":
       return <ProverbQuiz />;

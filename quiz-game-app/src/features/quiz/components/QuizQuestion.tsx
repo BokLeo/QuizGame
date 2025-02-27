@@ -1,18 +1,25 @@
 interface QuizQuestionProps {
-  question: string;
+  currentQuiz: { 문제: string; 정답: string; 설명: string };
   feedback: string;
   isCorrect: boolean;
 }
 
 export default function QuizQuestion({
-  question,
+  currentQuiz,
   feedback,
   isCorrect,
 }: QuizQuestionProps) {
   return (
-    <div className="text-lg w-full h-full flex items-center justify-center flex-col">
-      <div className="mb-4">{question}</div>
+    <div className="text-lg w-full h-full flex items-center justify-center flex-col px-6">
+      {/* 퀴즈 설명 */}
+      <div className="mb-6 text-base italic text-gray-600">
+        <p>“{currentQuiz.설명}”</p>
+      </div>
 
+      {/* 퀴즈 문제 */}
+      <div className="text-3xl font-bold mb-6">{currentQuiz.문제}</div>
+
+      {/* 피드백 메시지 */}
       {feedback && (
         <div
           className={`mt-4 p-4 rounded-md text-center transition-all duration-500 

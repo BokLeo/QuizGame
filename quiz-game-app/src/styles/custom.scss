@@ -10,4 +10,10 @@
   &:hover {
     background-color: $button-hover;
   }
+
+	i {
+		font-size: 20px;  /* 아이콘 크기 60px */
+		color: white;     /* 아이콘 색상 흰색 */
+		transition: color 0.3s ease;  /* 색상 변화에 부드러운 전환 효과 추가 */
+	}
 }
