@@ -7,7 +7,7 @@ interface QuizInputProps {
   onSubmit: (answer: string) => void;
 }
 
-const QuizInput: React.FC<QuizInputProps> = ({ questionNumber, answerLength, onSubmit }) => {
+const QuizInput: React.FC<QuizInputProps> = ({ questionNumber, answerLength, onSubmit}) => {
   const handleSubmit = (answer: string) => {
     onSubmit(answer);  // Quiz에서 받은 onSubmit 함수 호출
   };

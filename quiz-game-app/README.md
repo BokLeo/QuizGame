@@ -2,7 +2,7 @@
 ## 📌속담, 사자성어, 캐릭터 등을 맞추는 사이드 조이 프로젝트
 
 ## 
-- rmdir /s /q .next
+rmdir /s /q .next
 
 # FSD(Feature-Sliced Design) 패턴 직접 해보며 구조 파악해보기!
 	> Next.js와 FSD는 일부 컨벤션이 충돌 되는 부분이 존재한다.

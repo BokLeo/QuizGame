@@ -79,7 +79,7 @@ const SingleInput: React.FC<SingleInputProps> = ({ questionNumber, answerLength,
         // Submit 버튼을 스타일링하기 위한 예시 코드
 				<button
 					onClick={() => onSubmit(finalAnswer)}
-					className="mt-4 px-6 py-2 bg-blue-500 text-white font-semibold rounded-lg shadow-lg hover:bg-blue-600 active:bg-blue-700 focus:outline-none transition-all duration-300"
+					className="main-button mt-4 text-white font-semibold shadow-lg"
 				>
 					ENTER
 				</button>

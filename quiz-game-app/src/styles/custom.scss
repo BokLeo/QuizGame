@@ -1,3 +1,5 @@
+@use "sass:map";
+
 /* SCSS 변수 & 믹스인 불러오기 */
 @use "./variables" as *;
 @use "./mixins" as *;
@@ -5,15 +7,34 @@
 // 커스텀 스타일 정의
 .main-button {
   @include button-style;
-  background-color: $button-color;
+  background-color: map.get($color-variables-main, 600);
   color: white;
+	padding-block: calc(var(--spacing)* 4);
+	padding-inline: calc(var(--spacing)* 14);
   &:hover {
-    background-color: $button-hover;
+    background-color: map.get($color-variables-main, 800);
   }
+}
 
-	i {
-		font-size: 20px;  /* 아이콘 크기 60px */
-		color: white;     /* 아이콘 색상 흰색 */
-		transition: color 0.3s ease;  /* 색상 변화에 부드러운 전환 효과 추가 */
+// sub-button
+.sub-button {
+	@include button-style;
+	background-color: map.get($color-variables-gray, 400);
+	color: white;
+	padding-block: calc(var(--spacing)* 2);
+	padding-inline: calc(var(--spacing)* 4);
+	&:hover {
+		background-color: map.get($color-variables-main, 600);
+	}
+	&.clicked{
+		background-color: map.get($color-variables-main, 600);
+	}
+}
+
+.msg{
+	@include msg-style;
+	&.hint{
+		background-color: map.get($color-variables-main, 400);
+		color: white;
 	}
 }

@@ -3,7 +3,7 @@
 export default function ReportModule() {
 	return (
 		<>
-			<button className="main-button">Report</button>
+			<button className="sub-button">Report</button>
 		</>
 	);
 }

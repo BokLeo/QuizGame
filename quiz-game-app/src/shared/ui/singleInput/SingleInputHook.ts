@@ -76,6 +76,10 @@ export function SingleInputHook(questionNumber: number, answerLength: number) {
 			}
 		} else {
 			setLastKey(e.key);
+			// 영문자 입력인 경우 (영문자 입력 시)
+			if (e.key.length === 1 && !/[^a-zA-Z]/.test(e.key)) {  // 영문자일 경우
+				commitLetter(); // commitLetter 메서드 실행하여 입력된 문자를 처리하고, 다음 박스로 이동
+			}
 		}
 	};
 

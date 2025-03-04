@@ -1,5 +1,37 @@
+@use "sass:map";
+
 // 색상 변수
 $primary-bg: #f8f9fa;
 $text-color: #333;
 $button-color: #3498db;
 $button-hover: #217dbb; // ✅ 직접 지정된 색상 값 (darken 효과 적용)
+
+
+// international-klein-blue 색상 팔레트 정의
+$color-variables-main: (
+	50: #eff8ff,
+	100: #daefff,
+	200: #bde5ff,
+	300: #90d5ff,
+	400: #5cbdfe,
+	500: #369efb,
+	600: #2080f0,
+	700: #1869dd,
+	800: #1950a9,
+	900: #1b4a8d,
+	950: #152e56,
+);
+
+$color-variables-gray: (
+	50: #f7f7f7,
+	100: #ededed,
+	200: #dfdfdf,
+	300: #c8c8c8,
+	400: #a8a8a8,
+	500: #999999,
+	600: #888888,
+	700: #7b7b7b,
+	800: #676767,
+	900: #545454,
+	950: #363636,
+);

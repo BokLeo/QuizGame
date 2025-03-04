@@ -8,7 +8,7 @@ export default function Home() {
       
       {/* Next.js의 Link 컴포넌트를 사용하여 페이지 이동 */}
       <Link href="/quiz/Proverb">
-        <button className="main-button">Get Started</button>
+        <button className="main-button px-10 py-4 mt-4">Get Started</button>
       </Link>
 
     </main>

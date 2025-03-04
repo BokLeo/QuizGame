@@ -45,7 +45,7 @@ const QuizSettings: React.FC<QuizSettingsProps> = ({
 
       <button
         onClick={() => onStart(questionCount)}
-        className="px-6 py-3 text-white text-lg font-semibold bg-green-500 hover:bg-green-600 active:bg-green-700 rounded-lg shadow-lg transition duration-300"
+        className="main-button text-white text-lg font-semibold shadow-lg"
       >
         시작
       </button>
