@@ -18,6 +18,15 @@ export default function ProverbQuiz() {
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
 
 	useEffect(() => {
+
+		console.log(quizzes);
+    // quizzes 데이터가 로드되었을 때 isCorrect 초기화
+    if (quizzes.length > 0) {
+      setIsCorrect(new Array(quizzes.length).fill(false)); // quizzes의 길이에 맞게 isCorrect 초기화
+    }
+  }, [quizzes]); // quizzes가 변경될 때마다 실행
+
+	useEffect(() => {
 		console.log("isCorrect:", isCorrect);
 	}, [isCorrect]);
 

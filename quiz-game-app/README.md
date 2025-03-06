@@ -2,10 +2,19 @@
 ## 📌속담, 사자성어, 캐릭터 등을 맞추는 사이드 조이 프로젝트.
 
 
-## 
-rmdir /s /q .next
+### 실행되지 않을때
+	> .next 파일 지우기
+		rmdir /s /q .next
+		npm run build
+		npm run dev
+		
+	> 열려있는 포트 중지
+		netstat -ano | findstr :3000
+		taskkill /PID <port number> /F`
 
-# FSD(Feature-Sliced Design) 패턴 직접 해보며 구조 파악해보기!
+
+
+### FSD(Feature-Sliced Design) 패턴 직접 해보며 구조 파악해보기!
 	> Next.js와 FSD는 일부 컨벤션이 충돌 되는 부분이 존재한다.
 		1. app 폴더 네이밍 충돌
 			-- Next.js의 App Router은 기본적으로 app 폴더를 route로 사용한다. app 폴더 하위 디렉은 route 경로가 된다. 하위 page.tsx는 실행되는 페이지가 된다.
