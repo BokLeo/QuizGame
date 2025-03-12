@@ -53,8 +53,6 @@ export default function QuizLayout({
   return (
     <div className="flex flex-col items-center justify-center h-screen p-4 w-full">
       <h1 className="text-2xl font-bold mb-4">{title}</h1>
-			가가가가가
-			<div>{isCorrect ? ` true ${isCorrect}` : `false ${isCorrect}`}</div>
 
 			{!isQuizCompleted ? (
 				// 퀴즈 진행 중일 때

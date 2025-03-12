@@ -10,8 +10,8 @@ function NavigationContent() {
   const selectedMenu = searchParams?.get("menu") || "/";
 
   return (
-    <aside id={style.navigation} className="bg-gray-800 text-white flex flex-col items-center p-2">
-      <Link href="/" className="mb-4 block text-center w-full p-2">
+    <aside id={style.navigation} className="">
+      <Link href="/">
         홈
       </Link>
       <Link href="/quiz/Proverb" className={`${selectedMenu === "Proverb" ? "bg-gray-700" : ""}`}>속담 맞추기</Link>

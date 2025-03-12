@@ -17,10 +17,8 @@ export default function QuizQuestion({
 	 useEffect(() => {
 		
     if (!isCorrect) {
-			debugger;
       setQuestionWithAnswer(currentQuiz.문제); // 정답일 경우 원본 문제 표시
     } else {
-			debugger;
 			setQuestionWithAnswer(currentQuiz.문제.replace("___", currentQuiz.정답));
     }
   }, [isCorrect, currentQuiz]);

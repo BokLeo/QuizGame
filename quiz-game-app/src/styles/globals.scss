@@ -1,2 +1,19 @@
 /* Tailwind 불러오기 */
 @use "tailwindcss";
+
+@font-face {
+  font-family: 'JalnanOTF00';
+  src: url('/fonts/JalnanOTF00.woff') format('woff'); /* TTF 파일 */
+  // font-weight: normal;
+  // font-style: normal;
+}
+
+@font-face {
+  font-family: 'JalnanGothic';
+  src: url('/fonts/JalnanGothic.woff') format('woff'); /* TTF 파일 */
+}
+
+
+body {
+  font-family: 'JalnanOTF00', sans-serif;
+}

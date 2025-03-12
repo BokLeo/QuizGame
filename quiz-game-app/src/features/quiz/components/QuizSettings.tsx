@@ -30,14 +30,14 @@ const QuizSettings: React.FC<QuizSettingsProps> = ({
       <div className="flex items-center space-x-8 mb-8">
         <button
           onClick={handleIncrement}
-          className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 focus:outline-none"
+          className="unit-button w-12 h-12 bg-gray-400 text-white rounded-full hover:bg-blue-600 hover:cursor-pointer focus:outline-none"
         >
           <i className="fas fa-plus"></i> {/* + 아이콘 */}
         </button>
         <div className="text-9xl font-black">{questionCount}</div>
         <button
           onClick={handleDecrement}
-          className="w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 focus:outline-none"
+          className="unit-button w-12 h-12 bg-blue-500 text-white rounded-full flex items-center justify-center hover:bg-blue-600 focus:outline-none"
         >
           <i className="fas fa-minus"></i> {/* - 아이콘 */}
         </button>

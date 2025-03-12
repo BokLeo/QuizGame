@@ -18,8 +18,6 @@ export default function ProverbQuiz() {
   const [isQuizCompleted, setIsQuizCompleted] = useState(false);
 
 	useEffect(() => {
-
-		console.log(quizzes);
     // quizzes 데이터가 로드되었을 때 isCorrect 초기화
     if (quizzes.length > 0) {
       setIsCorrect(new Array(quizzes.length).fill(false)); // quizzes의 길이에 맞게 isCorrect 초기화
@@ -52,10 +50,13 @@ export default function ProverbQuiz() {
 		newIsCorrect[currentIndex] = userAnswer === currentQuiz.정답; // 정답이면 true, 아니면 false
 		setIsCorrect(newIsCorrect); // 배열을 업데이트
 		
+		let delay = 0;
 		if (newIsCorrect[currentIndex]) {
 			setFeedback("정답입니다 😽");
+			delay = 1000;
 		} else {
 			setFeedback("틀렸습니다 😿");
+			delay = 2000;
 		}
 		
 		// 다음 문제로 넘어가기
@@ -66,7 +67,7 @@ export default function ProverbQuiz() {
 			} else {
 				setIsQuizCompleted(true); // 퀴즈 완료 상태
 			}
-		}, 1000);
+		}, delay);
 	};
 	
 

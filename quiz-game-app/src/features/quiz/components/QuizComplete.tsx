@@ -22,7 +22,7 @@ const QuizComplete: React.FC<QuizCompleteProps> = ({ onRetry, isCorrect }) => {
         onClick={onRetry} // Calls the retry function passed as a prop
         className="flex items-center main-button"
       >
-        다시 도전하기 <i className="ml-2 fas fa-sync-alt" />
+        다시 도전! <i className="ml-2 fas fa-sync-alt" />
       </button>
     </div>
   );
