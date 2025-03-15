@@ -1,33 +1,70 @@
-#navigation {
-  width: 200px;
-  height: 100vh;
-  background-color: #f8f9fa;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+.navigation {
+	width: 200px;
+	height: 100vh;
+	background-color: #f8f9fa;
+	padding-top: 50px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;
 	font-weight: bold;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+	transition: width 0.3s ease-in-out, transform 0.3s ease-in-out;
+	position: relative;
+	overflow: hidden;
 
-  a {
-    text-decoration: none;
-    color: #333;
-    padding: 10px 20px;
-    font-size: 16px;
-    width: 100%;
-    display: block;
-    transition: background-color 0.3s, color 0.3s;
+	&.closed {
+		width: 52px; // 닫힘 상태에서 너비 줄이기
+	}
 
-    &:hover {
-      background-color: #f1f3f5;
-      color: #007bff;
-    }
+	a {
+		text-decoration: none;
+		color: #333;
+		padding: 10px 20px;
+		font-size: 16px;
+		width: 100%;
+		display: block;
+		transition: background-color 0.3s, color 0.3s;
 
-    &.active {
-      background-color: #007bff;
-      color: #fff;
-    }
-  }
+		&:hover {
+			background-color: #f1f3f5;
+			color: #007bff;
+		}
+
+		&.active {
+			background-color: #007bff;
+			color: #fff;
+		}
+	}
+
+	.toggleBtn {
+		cursor: pointer;
+
+		position: absolute;
+		top: 10px;
+		right: 10px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		width: 20px;
+		height: 20px;
+		padding: 16px;
+		border-radius: 4px;
+		font-size: 1.25rem;
+		color: #6c757d;
+
+		background: #f8f9fa;
+		box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+
+		z-index: 10;
+		transition: transform 0.3s ease-in-out, background 0.3s;
+
+		&:hover {
+			background: #e9ecef;
+			// 검정
+			color: #333;
+		}
+	}
 }
-
